@@ -1,0 +1,467 @@
+@charset "UTF-8";
+/*
+    Furyu Smartphone Template v.0.3 | code : Hteam | modify: 11-12-19
+*/
+/* //////////////////////////////////////////////////
+    基本設定
+//////////////////////////////////////////////////// */
+html { background: #000 }
+
+/* Font - font-size: 100%; フォントの指定はPC用
+****************************************************************************** */
+body { font: 10px/1.4 "Hiragino Kaku Gothic Pro","ヒラギノ角ゴ Pro W3","メイリオ","ＭＳ Ｐゴシック",Helvetica, Arial, sans-serif }
+table { font-size: inherit }
+*:first-child+html body {
+    font-size: 62.5%;
+    font-family: "メイリオ","ＭＳ Ｐゴシック",Helvetica, Arial, sans-serif;
+}
+h1, h2, h3, h4, h5, h6 {
+    font-size: 100%;
+    font-weight: bold;
+}
+
+/*  Clear Floats Without Structural Markup (http://www.positioniseverything.net/easyclearing.html)
+****************************************************************************** */
+.global_header:after, .global_nav:after, .main_content:after, .side_content:after, .global_footer:after, section:after, article:after, aside:after, .clearfix:after, .btn:after, .list:after {
+    content: "";
+    display: block;
+    height: 0;
+    clear: both;
+    visibility: hidden;
+}
+.global_header, .global_nav, .main_content, .side_content, .global_footer, section, article, aside, .clearfix, .btn, .list { zoom: 1 }
+
+/* --------------------------------------------------
+   BODY
+-------------------------------------------------- */
+body {
+    background: #efefef;
+    width: auto;
+    margin: 0;
+}
+/* developeモード
+----------------------------------- */
+html.developing body {
+    background: #efefef;
+    width: 480px;
+    margin: 0 auto;
+}
+@media screen and (max-width: 640px) { 
+    html.developing body {
+        width: 100%;
+        margin: 0;
+    }
+}
+/* 基本書式
+----------------------------------- */
+p, li, h4, h5, h6 {
+    font-size: 1.4em;
+    line-height: 1.6;
+}
+p { margin: 1em 0 }
+h1, h2, h3, h4, h5, h6 { position: relative }
+h1 {
+    padding: 0 0 0 10px;
+    font-size: 1.8em;
+    line-height: 2em;
+    color: #000000;
+    text-shadow: 0 1px 1px #666;
+    border-top: 1px solid #FFF;
+    border-bottom: 1px solid #ccc;
+    background-image: -webkit-gradient(linear, left top, left bottom, color-stop(0%,rgba(244,244,244,1)), color-stop(50%,rgba(237,237,237,1)), color-stop(100%,rgba(226,226,226,1)));
+    background-image: -webkit-linear-gradient(top,  rgba(244,244,244,1) 0%,rgba(237,237,237,1) 50%,rgba(226,226,226,1) 100%);
+    background-image: linear-gradient(top,  rgba(244,244,244,1) 0%,rgba(237,237,237,1) 50%,rgba(226,226,226,1) 100%);
+    -webkit-box-shadow: 0 1px 2px rgba(0, 0, 0, 0.3), 0 1px 1px rgba(255,255,255,0.3) inset;
+    box-shadow: 0 1px 2px rgba(0, 0, 0, 0.3), 0 1px 1px rgba(255,255,255,0.3) inset;
+}
+h2 {
+    padding: 0 0 0 10px;
+    font-size: 1.6em;
+    font-weight: normal;
+    line-height: 2;
+    color: #000000;
+    text-shadow: 0 1px 1px #666;
+    border-top: 1px solid #FFF;
+    border-bottom: 1px solid #D3D3D3;
+    background-image: -webkit-gradient(linear, left top, left bottom, color-stop(0%,rgba(244,244,244,1)), color-stop(50%,rgba(237,237,237,1)), color-stop(100%,rgba(226,226,226,1)));
+    background-image: -webkit-linear-gradient(top,  rgba(244,244,244,1) 0%,rgba(237,237,237,1) 50%,rgba(226,226,226,1) 100%);
+    background-image: linear-gradient(top,  rgba(244,244,244,1) 0%,rgba(237,237,237,1) 50%,rgba(226,226,226,1) 100%);
+    -webkit-box-shadow: 0 1px 2px rgba(0, 0, 0, 0.1);
+    box-shadow: 0 1px 2px rgba(0, 0, 0, 0.1);
+}
+h3 {
+    padding: 0 0 0 10px;
+    font-size: 1.4em;
+    line-height: 2em;
+    font-weight: normal;
+    color: #000000;
+    text-shadow: 0 1px 1px #666;
+    border-top: 1px solid #FFF;
+    border-bottom: 1px solid #D3D3D3;
+    background-image: rgba(240,240,240,1);
+    -webkit-box-shadow: 0 1px 12px rgba(0, 0, 0, 0.1);
+    box-shadow: 0 1px 1px rgba(0, 0, 0, 0.1);
+}
+a { }
+a:link { }
+a:visited { }
+a:hover { }
+a:active { }
+li>a { text-decoration: none }
+ol>li, ul>li { margin-left: 1.5em }
+ol>li { list-style: outside decimal }
+ul>li { list-style: outside disc }
+
+/* //////////////////////////////////////////////////
+    レイアウト
+//////////////////////////////////////////////////// */
+/* --------------------------------------------------
+    グローバルヘッダー
+-------------------------------------------------- */
+header.global_header {
+    text-align: center;
+    background: none repeat scroll 0 0 #000000;
+    color: #FFFFFF;
+    text-shadow: 0 1px 1px #cccccc;
+    padding: 10px;
+}
+header.global_header h1 {
+    color: #FFFFFF;
+    border: none;
+    background: none;
+    box-shadow: none;
+    -webkit-box-shadow: none;
+}
+/* --------------------------------------------------
+    グローバルナビ
+-------------------------------------------------- */
+nav.global_nav { overflow: hidden }
+nav.global_nav li {
+    margin: 0;
+    display: block;
+    float: left;
+    width: 20%;
+    text-align: center;
+}
+nav.global_nav li a {
+    display: block;
+    height: 44px;
+    line-height: 44px;
+    border: 1px solid #696969;
+    box-sizing: border-box;
+    -webkit-box-sizing: border-box;
+}
+/* --------------------------------------------------
+    メインコンテンツ
+-------------------------------------------------- */
+.main_content { }
+/*  サブコンテンツ
+----------------------------------- */
+.sub_content {
+    border: 1px solid #a6a6a6;
+    margin: 10px;
+}
+.third_content {
+    border: 1px dashed #696969;
+    margin: 10px 10px;
+}
+/* --------------------------------------------------
+    サイドコンテンツ
+-------------------------------------------------- */
+aside.side_content { }
+/* --------------------------------------------------
+    グローバルフッター
+-------------------------------------------------- */
+footer.global_footer {
+    background: none repeat scroll 0 0 #000000;
+    text-align: center;
+}
+footer.global_footer p {
+    color: #FFFFFF;
+    line-height: 2em;
+    margin: 0;
+    padding: 0;
+    vertical-align: middle;
+}
+
+/* /////////////////////////////////////
+        FUNCTION
+///////////////////////////////////// */
+/* --------------------------------------------------
+    ボタン
+-------------------------------------------------- */
+.btn {
+    margin: 10px 15px;
+    text-align: center;
+}
+.btn a, .btn input[type="reset"], .btn input[type="submit"], .btn button {
+    position: relative;
+    top: 0;
+    display: block;
+    width: 100%;
+    box-sizing: border-box;
+    -webkit-box-sizing: border-box;
+    border: none;
+    line-height: 50px;
+    border-radius: 10px;
+    font-size: 1.7em;
+    text-decoration: none;
+    color: #000000;
+    text-shadow: 0 -1px 1px #999;
+    -webkit-box-shadow: 0 1px 4px rgba(0, 0, 0, 0.5);
+    box-shadow: 0 1px 4px rgba(0, 0, 0, 0.5);
+}
+.btn a:active, .btn input[type="reset"]:active, .btn input[type="submit"]:active, .btn button:active {
+    top: 2px;
+    -webkit-box-shadow: 0 0 2px rgba(0, 0, 0, 0.2);
+}
+/* + ボタンの中が画像の場合 */
+.btn.img a {
+    border-radius: 0;
+    box-shadow: none;
+    -webkit-box-shadow: none;
+}
+.btn.img a img {
+    display: block;
+    width: 100%;
+}
+/* + 2カラム */
+.btn.c2 a, .btn.c2 input[type="reset"], .btn.c2 input[type="submit"], .btn.c2 button {
+    float: left;
+    width: 49%;
+    margin-bottom: 15px;
+}
+.btn.c2 a:nth-child(2n), .btn.c2 input[type="reset"]:nth-child(2n), .btn.c2 input[type="submit"]:nth-child(2n), .btn.c2 button:nth-child(2n) { float: right }
+/* + Form専用 */
+form .btn.c2 { }
+form .btn.c2 input[type='reset'] { width: 25% }
+form .btn.c2 input[type='submit'] {
+    width: 73%;
+    background: rgb(180,227,145);
+    background: -moz-linear-gradient(top,  rgba(180,227,145,1) 0%, rgba(97,196,25,1) 50%, rgba(180,227,145,1) 100%);
+    background: -webkit-gradient(linear, left top, left bottom, color-stop(0%,rgba(180,227,145,1)), color-stop(50%,rgba(97,196,25,1)), color-stop(100%,rgba(180,227,145,1)));
+    background: -webkit-linear-gradient(top,  rgba(180,227,145,1) 0%,rgba(97,196,25,1) 50%,rgba(180,227,145,1) 100%);
+    background: -o-linear-gradient(top,  rgba(180,227,145,1) 0%,rgba(97,196,25,1) 50%,rgba(180,227,145,1) 100%);
+    background: -ms-linear-gradient(top,  rgba(180,227,145,1) 0%,rgba(97,196,25,1) 50%,rgba(180,227,145,1) 100%);
+    background: linear-gradient(top,  rgba(180,227,145,1) 0%,rgba(97,196,25,1) 50%,rgba(180,227,145,1) 100%);
+    filter: progid:DXImageTransform.Microsoft.gradient( startColorstr='#b4e391', endColorstr='#b4e391',GradientType=0 );
+}
+/* + 3カラム */
+.btn.c3 a, .btn.c3 input[type="reset"], .btn.c3 input[type="submit"], .btn.c3 button {
+    float: left;
+    width: 32%;
+    margin: 0 2% 15px 0;
+}
+.btn.c3 a:nth-child(3n), .btn.c3 input[type="reset"]:nth-child(3n), .btn.c3 input[type="submit"]:nth-child(3n), .btn.c3 button:nth-child(3n) { margin: 0 0 15px 0 }
+/* + 4カラム */
+.btn.c4 a, .btn.c4 input[type="reset"], .btn.c4 input[type="submit"], .btn.c4 button {
+    float: left;
+    width: 24%;
+    margin: 0 1.5% 15px 0;
+}
+.btn.c4 a:nth-child(4n-1), .btn.c4 input[type="reset"]:nth-child(4n-1), .btn.c4 input[type="submit"]:nth-child(4n-1), .btn.c4 button:nth-child(4n-1) { margin: 0 1% 15px 0 }
+.btn.c4 a:nth-child(4n), .btn.c4 input[type="reset"]:nth-child(4n), .btn.c4 input[type="submit"]:nth-child(4n), .btn.c4 button:nth-child(4n) {
+    float: right;
+    margin: 0 0 15px 0;
+}
+/* --------------------------------------------------
+    リスト
+-------------------------------------------------- */
+.list>li {
+    margin: 0 !important;
+    padding: 0 !important;
+    box-sizing: border-box;
+    -webkit-box-sizing: border-box;
+}
+ul.list li { list-style: none }
+ol.list li { list-style: decimal inside }
+.list li a, .list li input[type="reset"], .list li input[type="submit"], .list li button, .list li label {
+    display: block;
+    position: relative;
+    padding: 0 5px 0 15px;
+    line-height: 2.5em;
+    border-top: 1px solid #fff;
+    border-bottom: 1px solid #c9c9c9;
+    text-shadow: 1px 1px 1px rgba(40,60,80,0.8);
+    box-sizing: border-box;
+    -webkit-box-sizing: border-box;
+    background: #efefef;
+    background: -moz-linear-gradient(top,  #efefef 0%, #e2e2e2 22%, #dbdbdb 50%, #cecece 51%, #d1d1d1 100%);
+    background: -webkit-gradient(linear, left top, left bottom, color-stop(0%,#efefef), color-stop(22%,#e2e2e2), color-stop(50%,#dbdbdb), color-stop(51%,#cecece), color-stop(100%,#d1d1d1));
+    background: -webkit-linear-gradient(top,  #efefef 0%,#e2e2e2 22%,#dbdbdb 50%,#cecece 51%,#d1d1d1 100%);
+    background: -o-linear-gradient(top,  #efefef 0%,#e2e2e2 22%,#dbdbdb 50%,#cecece 51%,#d1d1d1 100%);
+    background: -ms-linear-gradient(top,  #efefef 0%,#e2e2e2 22%,#dbdbdb 50%,#cecece 51%,#d1d1d1 100%);
+    background: linear-gradient(top,  #efefef 0%,#e2e2e2 22%,#dbdbdb 50%,#cecece 51%,#d1d1d1 100%);
+    filter: progid:DXImageTransform.Microsoft.gradient( startColorstr='#efefef', endColorstr='#d1d1d1',GradientType=0 );
+}
+.list li a:active, .list li input[type="reset"]:active, .list li input[type="submit"]:active, .list li button:active, form .list li.active label {
+    background: rgba(229,229,229,1);
+    border-top: 1px solid rgba(229,229,229,1);
+    border-bottom: 1px solid #dfdfdf;
+}
+form .list li.active label { background: transparent }
+/* + + arrow */
+.list.arrow li a::after, .list.arrow li input[type="reset"]::after, .list.arrow li input[type="submit"]::after, .list.arrow li button::after {
+    display: block;
+    float: right;
+    content: ">";
+    text-align: center;
+    width: 20px;
+    font-size: 1.4em;
+    font-weight: bold;
+    color: #444;
+    text-shadow: 0 1px 1px #fff;
+}
+/* + + inset */
+.list.inset {
+    margin: 10px 15px;
+    border-radius: 10px;
+    box-shadow: 0 1px 3px rgba(0,0,0,0.3);
+}
+.list.inset li:first-child, .list.inset li:first-child a, .list.inset li:first-child input[type="reset"], .list.inset li:first-child input[type="submit"], .list.inset li:first-child button { border-radius: 10px 10px 0 0 }
+.list.inset li:last-child, .list.inset>:last-child, .list.inset :last-child :last-child { border-radius: 0 0 10px 10px }
+/* + 2カラム */
+.list.c2 li {
+    width: 50%;
+    float: left;
+    text-align: center;
+}
+.list.c2 li a, .list.c2 li input[type="reset"], .list.c2 li input[type="submit"], .list.c2 li button, .list.c2 li label, .list.c3 li a, .list.c3 li input[type="reset"], .list.c3 li input[type="submit"], .list.c3 li button, .list.c3 li label, .list.c4 li a, .list.c4 li input[type="reset"], .list.c4 li input[type="submit"], .list.c4 li button, .list.c4 li label, .list.c5 li a, .list.c5 li input[type="reset"], .list.c5 li input[type="submit"], .list.c5 li button, .list.c5 li label {
+    border-left: 1px solid #fff;
+    border-right: 1px solid #ccc;
+}
+.list.c4 li a, .list.c4 li input[type="reset"], .list.c4 li input[type="submit"], .list.c4 li button, .list.c4 li label, .list.c5 li a, .list.c5 li input[type="reset"], .list.c5 li input[type="submit"], .list.c5 li button, .list.c5 li label {
+    height: 44px;
+    line-height: 44px;
+}
+/* + + column setting */
+.list.c2 li a, .list.c3 li a, .list.c4 li a, .list.c5 li a { padding: 0 2px }
+/* + + inset */
+.list.c2.inset>:first-child, .list.c2.inset>:first-child * {
+    border-top-left-radius: 10px;
+    border-top-right-radius: 0px;
+}
+.list.c2.inset>:nth-child(2), .list.c2.inset>:nth-child(2) * { border-top-right-radius: 10px }
+.list.c2.inset>:nth-last-child(2), .list.c2.inset>:nth-last-child(2) * {
+    border-top-right-radius: 0;
+    border-bottom-left-radius: 10px;
+}
+.list.c2.inset>:last-child, .list.c2.inset>:last-child * {
+    border-bottom-right-radius: 10px;
+    border-bottom-left-radius: 0;
+}
+/* + 3カラム */
+.list.c3 li {
+    width: 33.3%;
+    float: left;
+    text-align: center;
+}
+/* + + inset */
+.list.c3.inset>:first-child, .list.c3.inset>:first-child * {
+    border-top-left-radius: 10px;
+    border-top-right-radius: 0px;
+}
+.list.c3.inset>:nth-child(3), .list.c3.inset>:nth-child(3) * { border-top-right-radius: 10px }
+.list.c3.inset>:nth-last-child(3), .list.c3.inset>:nth-last-child(3) * {
+    border-top-right-radius: 0;
+    border-bottom-left-radius: 10px;
+}
+.list.c3.inset>:last-child, .list.c3.inset>:last-child * {
+    border-bottom-right-radius: 10px;
+    border-bottom-left-radius: 0;
+}
+/* + 4カラム */
+.list.c4 li {
+    width: 25%;
+    float: left;
+    text-align: center;
+}
+/* + + inset */
+.list.c4.inset>:first-child, .list.c4.inset>:first-child * {
+    border-top-left-radius: 10px;
+    border-top-right-radius: 0px;
+}
+.list.c4.inset>:nth-child(4), .list.c4.inset>:nth-child(4) * { border-top-right-radius: 10px }
+.list.c4.inset>:nth-last-child(4), .list.c4.inset>:nth-last-child(4) * {
+    border-top-right-radius: 0;
+    border-bottom-left-radius: 10px;
+}
+.list.c4.inset>:last-child, .list.c4.inset>:last-child * {
+    border-bottom-right-radius: 10px;
+    border-bottom-left-radius: 0;
+}
+/* + 5カラム */
+.list.c5 li {
+    width: 20%;
+    float: left;
+    text-align: center;
+}
+/* + + inset */
+.list.c5.inset>:first-child, .list.c5.inset>:first-child * {
+    border-top-left-radius: 10px;
+    border-top-right-radius: 0px;
+}
+.list.c5.inset>:nth-child(5), .list.c5.inset>:nth-child(5) * { border-top-right-radius: 10px }
+.list.c5.inset>:nth-last-child(5), .list.c5.inset>:nth-last-child(5) * {
+    border-top-right-radius: 0;
+    border-bottom-left-radius: 10px;
+}
+.list.c5.inset>:last-child, .list.c5.inset>:last-child * {
+    border-bottom-right-radius: 10px;
+    border-bottom-left-radius: 0;
+}
+
+/*  FORM
+----------------------------------- */
+input[type="submit"], input[type="reset"], button { cursor: pointer }
+form .list li { position: relative }
+form .list li.active {
+    font-weight: bold;
+    background-color: #CCCCCC;
+    background-image: -webkit-gradient( linear, left  top, right bottom, from(           rgba(  0,  0,  0, 0.1)), color-stop(.05, rgba(  0,  0,  0, 0.1)), color-stop(.05, rgba(255,255,255, 0.1)), color-stop(.45, rgba(255,255,255, 0.1)), color-stop(.45, rgba(  0,  0,  0, 0.1)), color-stop(.55, rgba(  0,  0,  0, 0.1)), color-stop(.55, rgba(255,255,255, 0.1)), color-stop(.95, rgba(255,255,255, 0.1)), color-stop(.95, rgba(  0,  0,  0, 0.1)), to(             rgba(  0,  0,  0, 0.1)));
+    background-image: linear-gradient( -45deg, rgba(  0,  0,  0, .1)   0, rgba(  0,  0,  0, .1)   5%, rgba(255,255,255, .1)   5%, rgba(255,255,255, .1)  45%, rgba(  0,  0,  0, .1)  45%, rgba(  0,  0,  0, .1)  55%, rgba(255,255,255, .1)  55%, rgba(255,255,255, .1)  95%, rgba(  0,  0,  0, .1)  95%, rgba(  0,  0,  0, .1) 100%);
+    -webkit-background-size: 5px 5px;
+    background-size: 5px 5px;
+}
+form .list li label { text-align: left }
+form .list li.active label { border-top: 1px solid #CCCCCC }
+form .list li input[type="checkbox"], form .list li input[type="radio"] {
+    position: absolute;
+    z-index: -1;
+}
+form .list li input[type="checkbox"]+label, form .list li input[type="radio"]+label {
+    display: block;
+    padding: 6px 0;
+    line-height: 1.8;
+    padding-left: 27px;
+    background-repeat: no-repeat;
+    background-position: 7px center;
+}
+form .list li input[type="checkbox"]+label { background-image: url(../img/template/icon/checkbox_false.png) }
+form .list li input[type="checkbox"]:checked+label { background-image: url(../img/template/icon/checkbox_checked.png) }
+form .list li input[type="radio"]+label { background-image: url(../img/template/icon/radio_false.png) }
+form .list li input[type="radio"]:checked+label { background-image: url(../img/template/icon/radio_checked.png) }
+
+
+/* //////////////////////////////////////////////////
+    テンプレート - その他
+//////////////////////////////////////////////////// */
+pre {
+    display: block;
+    background: #fdfdfd;
+    border: 1px solid #dedede;
+}
+code {
+    padding: 2px 3px;
+    margin: 0 2px;
+    font-size: 120%;
+    background: #fdfdfd;
+    border: 1px solid #dedede;
+}
+pre code {
+    display: block;
+    padding: 0;
+    margin: 0;
+    background: transparent;
+    border: none;
+}
