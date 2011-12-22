@@ -1,7 +1,424 @@
-HTML5 Template v.1.1
+HTML5 template 使い方
+=====================
 
-||Function
-(empty)
 
-|| Todo
-(empty)
+preview : http://ec2-175-41-197-9.ap-northeast-1.compute.amazonaws.com/tan/Html5Sample/]
+*最終更新日* : 2011/12/19
+
+
+フォルダ構造
+------------
+
+* /root/
+** index.html - お決まりのHTMLファイル。サンプルを記載しています。
+** _sample_btn.html
+** _sample_form.html
+** _sample_list.html
+** favicon.ico - ファビコン
+** touch~~~.png - iPhoneやiPadでホームに追加した時のアイコン
+** /css/
+*** main.css - メインのCSSファイル
+*** template.css - デザインのベースとなる汎用パーツ等が書かれたCSSファイル
+*** reset.css - ブラウザが自動でする各タグのデザインをリセットするCSS
+** /js/
+*** jquery.js - v.1.7.1です。
+最新があればそれに応じてアップデートしましょう。バージョンによって動かなくなるプラグインもあるので注意。
+*** jquery-ui.js - v.1.8.6です。
+最新があればそれに応じてアップデートしましょう。 
+*** main.js - メインのJSファイル
+** /img/ - メインの画像フォルダ
+*** /template/ - テンプレート専用の画像フォルダ
+
+
+基本設定
+--------
+
+|| 編集
+デザインは _main.css_ に追記していきます。
+いくつかのスタイルが既に _template.css_ に記述されてますが、
+デザインを変えたい場合は _main.css_ 上でスタイルを上書きして下さい。
+
+_width_ / _margin_ / _padding_ を触らない限り壊れないはずですが、
+特定状況下で壊れた時は相談して貰えれば、壊れにくい用に改良していきます。
+
+|| フォントサイズ
+%かemで指定します。
+1em = 10px / 100% = 10px / 1.4em = 14px / 160% = 16px
+と、簡単に設定出来る様になってます。
+
+|| その他全般
+_main.css_ を編集して下さい。
+主要なポイントとしては
+
+* Bodyのカラー指定
+* h1,h2,h3等 headerタグ編集
+* aにカラー指定
+* .btnのデザイン指定
+* .listのデザイン指定
+
+と、なります。
+詳しくは... [HTML5講習会 資料 おさらい|http://cvs:8080/wiki/pages/viewpage.action?pageId=88553]
+
+見出し
+------
+
+|| HTML
+そのまま使います。
+```html
+<h1>h1 - 見出し1</h1>
+<h2>h2 - 見出し2</h2>
+<h3>h3 - 見出し3</h3>
+<h4>h4 - 見出し4</h4>
+<h5>h5 - 見出し5</h5>
+<h6>h6 - 見出し6</h6>
+```
+
+|| CSS
+サンプルのグラデーションとtext-shadowをかけています。
+h4以降はスタイルを指定していません。
+```css
+h1 {
+    padding:  0 0 0 10px;
+    font-size: 1.8em;
+    line-height:2em;
+
+    color: #000000;
+    text-shadow: 0 1px 1px #666;
+
+    border-top: 1px solid #FFF;
+    border-bottom: 1px solid #ccc;
+
+    background: rgb(244,244,244);
+    background: -webkit-gradient(linear, left top, left bottom, color-stop(0%,rgba(244,244,244,1)), color-stop(50%,rgba(237,237,237,1)), color-stop(100%,rgba(226,226,226,1)));
+    background: -webkit-linear-gradient(top,  rgba(244,244,244,1) 0%,rgba(237,237,237,1) 50%,rgba(226,226,226,1) 100%);
+    background: linear-gradient(top,  rgba(244,244,244,1) 0%,rgba(237,237,237,1) 50%,rgba(226,226,226,1) 100%);
+
+    -webkit-box-shadow: 0 1px 2px rgba(0, 0, 0, 0.3), 0 1px 1px rgba(255,255,255,0.3) inset;
+    box-shadow: 0 1px 2px rgba(0, 0, 0, 0.3), 0 1px 1px rgba(255,255,255,0.3) inset;
+}
+```
+
+ボタン
+======
+
+|| HTML
+div.btn>a で作ります。
+
+追加クラス表
+||追加クラス名||意味||値の範囲||使用例||
+|c\[値\]|カラム数を増やせます。|2-4|div.btn.c3>a|
+
+通常版
+```html
+<div class="btn">
+  <a href="#">大きなボタン</a>
+</div>
+```
+
+3カラムの場合
+```html
+<div class="btn c3">
+    <a href="#">ボタン1</a>
+    <a href="#">ボタン2</a>
+    <a href="#">ボタン3</a>
+    <a href="#">ボタン4</a>
+    <a href="#">ボタン5</a>
+    <a href="#">ボタン6</a>
+</div>
+```
+
+||CSS
+_border-radius_ と _width_ を指定しています。
+角丸になっていますが、角丸を辞めたい場合は、 _border-radius_ そのものを取って下さい。
+幅の大きさは margin を左右 15px 指定しています。
+
+_.btn a{}_ にCSSを追記すると他カラムのボタンにも影響が出ます。
+グラデーション等一括指定しましょう。
+
+```css
+/* ------  btn ------ */
+.btn{
+    margin: 10px 15px;
+    text-align: center;
+}
+
+.btn a{
+    position:relative;
+    top: 0;
+    display: block;
+    width: 100%;
+    box-sizing: border-box;
+    -webkit-box-sizing: border-box;
+    line-height: 50px;
+    border-radius: 10px;
+    font-size: 1.7em;
+    text-decoration: none;
+    color: #000000;
+    text-shadow: 0 -1px 1px #999;
+    -webkit-box-shadow: 0 1px 4px rgba(0, 0, 0, 0.5);
+    box-shadow: 0 1px 4px rgba(0, 0, 0, 0.5);
+}
+
+.btn a:active{
+    top: 2px;
+    -webkit-box-shadow:0 0 2px rgba(0, 0, 0, 0.2);
+}
+```
+
+リスト
+======
+
+|| HTML
+_ul.list>li>a_ もしくは _ol.list>li>a_ で作ります。
+ulの場合、 _list-style-type_ は無いですが、ol の場合は数字が出ます。 (decimal)
+
+追加クラス表
+||追加クラス名||意味||値の範囲||使用例||
+|c\[値\]|カラム数を増やせます。|2-5|ul.list.c3|
+|inset|横幅全体表示を取りやめます。|inset|ul.list.inset|
+|arrow|右端に ">" を表示します。|arrow|ul.list.arrow|
+
+※6カラム以上表示するのはスマートフォンでは非常に苦しいです。
+　3カラムを使いましょう。
+※5カラム inset も苦しいです。
+　対応してますが、極力避けましょう。
+
+通常
+```html
+<h2>通常リスト ul.list </h2>
+<ul class="list">
+    <li><a href="">通常リスト</a></li>
+    <li><a href="">通常リスト</a></li>
+    <li><a href="">通常リスト</a></li>
+    <li><a href="">通常リスト</a></li>
+</ul>
+
+<h2>通常数字リスト ol.list </h2>
+<ol class="list">
+    <li><a href="">通常リスト</a></li>
+    <li><a href="">通常リスト</a></li>
+    <li><a href="">通常リスト</a></li>
+    <li><a href="">通常リスト</a></li>
+</ol>
+```
+
+追加クラスver
+```html
+<h2>通常リスト 2カラム  ul.list.c2 </h2>
+<ul class="list c2">
+    <li><a href="">通常リスト</a></li>
+    <li><a href="">通常リスト</a></li>
+    <li><a href="">通常リスト</a></li>
+    <li><a href="">通常リスト</a></li>
+    <li><a href="">通常リスト</a></li>
+    <li><a href="">通常リスト</a></li>
+</ul>
+
+<h3>通常リスト 2カラム inset  ul.list.c2.inset </h3>
+<ul class="list c2 inset">
+    <li><a href="">通常リスト</a></li>
+    <li><a href="">通常リスト</a></li>
+    <li><a href="">通常リスト</a></li>
+    <li><a href="">通常リスト</a></li>
+    <li><a href="">通常リスト</a></li>
+    <li><a href="">通常リスト</a></li>
+</ul>
+
+<h3>矢印付きリスト ul.list.arrow</h3>
+<ul class="list arrow">
+    <li><a href="">通常リスト</a></li>
+    <li><a href="">通常リスト</a></li>
+    <li><a href="">通常リスト</a></li>
+    <li><a href="">通常リスト</a></li>
+    <li><a href="">通常リスト</a></li>
+    <li><a href="">通常リスト</a></li>
+</ul>
+```
+
+||CSS
+insetは _border-radius_ を各カラム毎に指定しています。
+角丸を外す場合は、各カラムのCSSが記載されてる下に
+_inset_ の場合の幅の大きさは _margin_ を左右 15px 指定しています。
+
+_.list li a_ にCSSを追記すると、 _.list_ 全体に影響が出ます。
+
+```css
+.list>li{margin-left: 0;}
+
+ul.list li { list-style: none;}
+ol.list li { list-style:decimal inside;}
+
+.list li a{
+    display: block;
+    position: relative;
+    padding: 0 5px 0 15px;
+    line-height: 2.5em;
+    border-top: 1px solid #FFFFFF;
+    border-bottom: 1px solid #ccc;
+
+    box-sizing: border-box;
+    -webkit-box-sizing: border-box;
+    
+    background: -webkit-gradient(linear, left top, left bottom, color-stop(0%,rgba(255,255,255,1)), color-stop(100%,rgba(229,229,229,1)));
+    background: -webkit-linear-gradient(top,  rgba(255,255,255,1) 0%,rgba(229,229,229,1) 100%);
+    background: linear-gradient(top,  rgba(255,255,255,1) 0%,rgba(229,229,229,1) 100%);
+}
+
+.list li a:active{
+    background: rgba(229,229,229,1);
+    border-top: 1px solid rgba(229,229,229,1);
+}
+```
+
+フォーム (未完成)
+=================
+
+_/js/css/template_form.js_ と連動します。
+
+現在対応しているタグ (いずれも _<form>_ 内となります。)
+* input:checkbox
+* input:radio
+* input:reset
+* input:submit
+* button
+
+|| チェックボックスとラジオボタン
+_section > ul.list > li > input\[type='checkbox'\] + label_ / _section > ul.list > li > input\[type='radio'\] + label_
+が、基本形になります。
+_ul.list_ は上記の _.list_ と同じですが、フォームタグ内に書く事で、チェックボックス/ラジオボタン用に調整してます。
+
+_<input>_ と _<label>_ は、 _<input>_ を _<label>_ の中に入れずに *隣接* してください。
+
+サンプルソース
+```html
+<section>
+    <h1>フォームのサンプル</h1>
+    <form action="">
+        <section>
+            <h2>チェックボックス ul.list</h2>
+            <ul class="list">
+                <li><input type="checkbox" name="chk[]" id="chk1"><label for="chk1">1</label></li>
+                <li><input type="checkbox" name="chk[]" id="chk2"><label for="chk2">2</label></li>
+            </ul>
+        </section>
+
+        <!-- ボタン -->
+        <div class="btn c2">
+            <input type="reset" value="リセット">
+            <input type="submit" value="送信">
+        </div>
+    </form>
+</section>
+```
+
+|| HTML
+h4. チェックボックス
+_.list_ に入れて、 _ul.list>li>input+label_ の構造で作ります。
+_.list_ の機能が使えます。
+
+```html
+<ul class="list">
+    <li><input type="checkbox" name="" id="chk1"> <label for="chk1">ラベル</label></li>
+</ul>
+```
+
+h4. ラジオボタン
+_.list_ に入れて、 _ul.list>li>input+label_ の構造で作ります。
+_.list_ の機能が使えます。
+
+```html
+<ul class="list">
+    <li><input type="radio" name="" id="radio1"> <label for="radio1">ラベル</label></li>
+</ul>
+```
+
+h4. リセットとサブミット
+_.btn_ に入れて _.btn.c2>input:reset + input:submit_ の構造で作ります。
+※ 現在は _div.btn.c2_ の中でしか使えませんが、需要があれば他のカラムでも対応します。
+
+```css
+<div class="btn c2">
+    <input type="reset" value="リセット">
+    <input type="submit" value="送信">
+</div>
+```
+
+|| CSS
+チェックボックス/ラジオボタンがデフォルトだとズレるので、画像で代用しています。
+ボタンの画像は _/img/template/icon/_ に入っています。
+サイトのデザインに合わせて差し替えて下さい。
+
+```css
+/*  FORM
+----------------------------------- */
+input[type="submit"],
+input[type="reset"],
+button{
+    cursor: pointer;
+}
+
+
+form .list li{
+    position: relative;
+}
+
+/* li.active > チェックが入った時 */
+form .list li.active{
+    font-weight: bold;
+    background-color: #CCCCCC;
+    background-image: -webkit-gradient(略);
+    background-image: linear-gradient(略);
+    -webkit-background-size: 5px 5px;
+    background-size: 5px 5px;
+}
+form .list li label{
+    text-align: left;
+}
+form .list li.active label{
+    border-top: 1px solid #CCCCCC;
+}
+
+/* チェックボックスとラジオボタンは表示を隠して画像にする。 */
+form .list li input[type="checkbox"],
+form .list li input[type="radio"]{
+    position: absolute;
+    z-index: -1;
+}
+
+form .list li input[type="checkbox"]+label,
+form .list li input[type="radio"]+label{
+    display: block;
+    padding: 6px 0;
+    line-height: 1.8;
+    padding-left: 27px;
+    background-repeat: no-repeat;
+    background-position: 7px center;
+}
+
+form .list li input[type="checkbox"]+label         { background-image: url(../img/template/icon/checkbox_false.png);}
+form .list li input[type="checkbox"]:checked+label { background-image: url(../img/template/icon/checkbox_checked.png);}
+form .list li input[type="radio"]+label            { background-image: url(../img/template/icon/radio_false.png);}
+form .list li input[type="radio"]:checked+label    { background-image: url(../img/template/icon/radio_checked.png);}
+
+```
+
+
+アップデート予定リスト
+----------------------
+
+|| CSS
+* 表のデザインの追加
+* 定義リスト (dl>dt+dd) の追加
+* h4以降のheaderのデザイン (スランプ中)
+
+|| HTML+JavaScript
+* 汎用的なタブ
+* 汎用的なアコーディオン
+* 汎用的なフリッカー
+* 汎用的なティッカー
+
+
+改善提案随時募集中。
+-------------------
+
+実際に見て「いいな」と思ったデザイン等あれば、URLと部位を指定して教えてくれたらどんどん取り込みます。
